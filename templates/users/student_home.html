@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>هیرام</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ===== هدر ===== */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* لوگو و نام موسسه */
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .logo-text h1 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .logo-text p {
+            font-size: 0.75rem;
+            color: #999;
+        }
+
+        /* بخش راست هدر */
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            position: relative;
+        }
+
+        /* زنگوله */
+        .notification-btn {
+            position: relative;
+            background: transparent;
+            border: none;
+            color: #667eea;
+            font-size: 1.3rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .notification-btn:hover {
+            transform: scale(1.15);
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            background: #ff4757;
+            color: white;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+            font-weight: bold;
+        }
+
+        .notification-badge.active {
+            display: flex;
+        }
+
+        /* اسم کاربر */
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .user-name {
+            color: #333;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* منو دکمه */
+        .menu-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            color: white;
+            font-size: 0.9rem;
+            cursor: pointer;
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .menu-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        /* درپ‌دون منو */
+        .dropdown-menu {
+            position: absolute;
+            top: 60px;
+            left: 0;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            min-width: 180px;
+            display: none;
+            overflow: hidden;
+            animation: slideDown 0.3s ease;
+        }
+
+        .dropdown-menu.active {
+            display: block;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .dropdown-menu a {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.9rem 1.3rem;
+            color: #333;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .dropdown-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-menu a:hover {
+            background: #f5f5f5;
+            color: #667eea;
+            padding-right: 1.5rem;
+        }
+
+        .dropdown-menu a i {
+            font-size: 0.95rem;
+            color: #667eea;
+        }
+
+        /* ===== محتوای اصلی ===== */
+        .main-content {
+            flex: 1;
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* بخش دکمه‌ها */
+        .buttons-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .custom-btn {
+            border: none;
+            padding: 2.5rem 1.5rem;
+            border-radius: 16px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            text-decoration: none;
+            min-height: 220px;
+        }
+
+        .custom-btn i {
+            font-size: 3rem;
+        }
+
+        .custom-btn:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .custom-btn:active {
+            transform: translateY(-3px);
+        }
+
+        /* رنگ‌های مختلف برای دکمه‌ها */
+        .btn-1 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .btn-2 {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .btn-3 {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .btn-4 {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        .btn-5 {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        /* ===== فوتر ===== */
+        footer {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            padding: 1.5rem;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-content p {
+            font-size: 0.85rem;
+            margin-bottom: 0.8rem;
+            color: #666;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .social-links a:hover {
+            transform: scale(1.15);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 1024px) {
+            .buttons-section {
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .custom-btn {
+                padding: 2rem 1rem;
+                min-height: 200px;
+                font-size: 1rem;
+            }
+
+            .custom-btn i {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                gap: 0.5rem;
+            }
+
+            .logo-text h1 {
+                font-size: 1.1rem;
+            }
+
+            .logo-text p {
+                display: none;
+            }
+
+            .user-name {
+                display: none;
+            }
+
+            .dropdown-menu {
+                left: auto;
+                right: 0;
+            }
+
+            .main-content {
+                padding: 1.5rem;
+            }
+
+            .buttons-section {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .custom-btn {
+                padding: 1.5rem 1rem;
+                min-height: 150px;
+                font-size: 0.95rem;
+            }
+
+            .custom-btn i {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .notification-btn {
+                font-size: 1.1rem;
+            }
+
+            .menu-btn {
+                padding: 0.5rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .custom-btn {
+                padding: 1.2rem 0.8rem;
+                min-height: 140px;
+            }
+
+            .custom-btn i {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== هدر ===== -->
+    <header>
+        <div class="header-container">
+            <!-- لوگو و نام موسسه -->
+            <div class="logo-section">
+                <div class="logo-icon">
+                    <img src="/static/images/logo.png" alt="لوگو" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div class="logo-text">
+                    <h1>آکادمی مشاوره هیرام</h1>
+                    <p>آینده‌ی درخشان شما</p>
+                </div>
+            </div>
+
+            <!-- بخش راست -->
+            <div class="header-right">
+                <!-- زنگوله -->
+                <button class="notification-btn" id="notificationBtn">
+                    <i class="fas fa-bell"></i>
+                    <div class="notification-badge" id="notificationBadge">1</div>
+                </button>
+
+                <!-- اسم کاربر -->
+                <span class="user-name" id="userName">{{ user.first_name }} {{ user.last_name }}</span>
+
+                <!-- منو دکمه -->
+                <button class="menu-btn" id="menuBtn">
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+
+                <!-- درپ‌دون منو -->
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <a href="#profile">
+                        <i class="fas fa-user"></i>
+                        <span>حساب کاربری</span>
+                    </a>
+                    <a href="#contact">
+                        <i class="fas fa-envelope"></i>
+                        <span>ارتباط با ما</span>
+                    </a>
+                    <a href="#logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>خروج از حساب</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== محتوای اصلی ===== -->
+    <div class="main-content">
+        <div class="buttons-section">
+
+            <button class="custom-btn btn-1" onclick="window.location.href='{% url "student_planing" %}'">
+                <i class="fas fa-book"></i>
+                <span>برنامه ریزی</span>
+            </button>
+
+            <button class="custom-btn btn-2" onclick="window.location.href='{% url "student_plan" %}'">
+                <i class="fas fa-graduation-cap"></i>
+                <span>مشاهده برنامه و گزارش کار</span>
+            </button>
+
+            <button class="custom-btn btn-3" onclick="window.location.href='{% url "student_progress" %}'">
+                <i class="fas fa-chart-line"></i>
+                <span>روند پیشرفت</span>
+            </button>
+
+            <button class="custom-btn btn-4" onclick="window.location.href='{% url "student_call" %}'">
+                <i class="fas fa-comments"></i>
+                <span>درخواست تماس با مشاور</span>
+            </button>
+
+            <button class="custom-btn btn-5" onclick="handleButtonClick(5)">
+                <i class="fas fa-cogs"></i>
+                <span>یادداشت برای تماس</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- ===== فوتر ===== -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 موسسه مشاوره - تمام حقوق محفوظ است</p>
+            <div class="social-links">
+                <a href="https://instagram.com" target="_blank" title="اینستاگرام">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://t.me/konkoor_hiram" target="_blank" title="تلگرام">
+                    <i class="fab fa-telegram"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== تنظیمات درپ‌دون منو =====
+        const menuBtn = document.getElementById('menuBtn');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+
+        menuBtn.addEventListener('click', () => {
+            dropdownMenu.classList.toggle('active');
+        });
+
+        // بستن منو هنگام کلیک خارج آن
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.header-right')) {
+                dropdownMenu.classList.remove('active');
+            }
+        });
+
+        // ===== تنظیمات زنگوله =====
+        const notificationBtn = document.getElementById('notificationBtn');
+        const notificationBadge = document.getElementById('notificationBadge');
+
+        notificationBtn.addEventListener('click', () => {
+            alert('شما 1 اعلان نخوانده دارید!');
+        });
+
+        // تابع برای نمایش/پنهان کردن نقطه قرمز
+        function showNotificationBadge(hasNotification) {
+            if (hasNotification) {
+                notificationBadge.classList.add('active');
+            } else {
+                notificationBadge.classList.remove('active');
+            }
+        }
+
+        // ===== تنظیمات دکمه‌های اصلی =====
+        function handleButtonClick(buttonNumber) {
+            alert(`دکمه ${buttonNumber} فشار داده شد!`);
+        }
+
+        // ===== تنظیمات درپ‌دون منو =====
+        document.querySelector('a[href="#profile"]').addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('صفحه حساب کاربری');
+        });
+
+        document.querySelector('a[href="#contact"]').addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('صفحه ارتباط با ما');
+        });
+
+        document.querySelector('a[href="#logout"]').addEventListener('click', (e) => {
+            e.preventDefault();
+            if (confirm('آیا می‌خواهید از حساب خود خارج شوید؟')) {
+                alert('شما با موفقیت خارج شدید');
+            }
+        });
+    </script>
+</body>
+</html>
