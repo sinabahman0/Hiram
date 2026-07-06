@@ -5,10 +5,10 @@ from users.models import UserRelationship
 class Topic(models.Model):
 
     LESSON_CHOICES = [
-        ('general', 'زیست'),
-        ('experimental', 'فیزیک'),
-        ('mathematical', 'ریاضی'),
-        ('humanities', 'شیمی'),
+        ('bio', 'زیست'),
+        ('dynamic', 'فیزیک'),
+        ('math', 'ریاضی'),
+        ('chemistry', 'شیمی'),
     ]
     FIELD_CHOICES = [
         ('general', 'نهم'),
@@ -17,7 +17,23 @@ class Topic(models.Model):
         ('humanities', 'انسانی'),
     ]
 
+    ADDRESS_CHOICES = [
+        ('10th', 'دهم'),
+        ('11th', 'یازدهم'),
+        ('12th', 'دوازدهم'),
+        ('problem', 'مسائل'),
+    ]
+
+    SEASON_CHOICES = [
+        ('season1', 'فصل1'),
+        ('season2', 'فصل2'),
+        ('season3', 'فصل3'),
+        ('season4', 'فصل4'),
+        ('season5', 'فصل5')
+    ]
+
     title = models.CharField(max_length=200, default='', verbose_name='نام مبحث')
+
     lesson = models.CharField(
         max_length=20,
         choices=LESSON_CHOICES,
@@ -31,6 +47,13 @@ class Topic(models.Model):
         blank=True,
         null=True,
         verbose_name='رشته'
+    )
+    address = models.CharField(
+        max_length=20,
+        choices=ADDRESS_CHOICES,
+        blank=True,
+        null=True,
+        verbose_name='آدرس'
     )
 
     def __str__(self):
@@ -54,4 +77,3 @@ class Tasks(models.Model):
     title = models.CharField(max_length=200)
     time = models.IntegerField(default=0)
     is_done = models.BooleanField(default=False)
-
