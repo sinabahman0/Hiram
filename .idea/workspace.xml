@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="739583cd-1f6e-41e2-bbc5-7070d3da7958" name="Changes" comment="commit">
-      <change beforePath="$PROJECT_DIR$/planer/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/planer/models.py" afterDir="false" />
-    </list>
+    <list default="true" id="739583cd-1f6e-41e2-bbc5-7070d3da7958" name="Changes" comment="commit" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -227,7 +225,7 @@
       <workItem from="1783368598670" duration="651000" />
       <workItem from="1783372706184" duration="8721000" />
       <workItem from="1783397172781" duration="2245000" />
-      <workItem from="1783465100203" duration="4688000" />
+      <workItem from="1783465100203" duration="5279000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="commit">
       <created>1783470175259</created>
@@ -235,7 +233,13 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۰۱" />
       <updated>1783470175261</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL‎۰۰۰۰۲" summary="commit">
+      <created>1783470489584</created>
+      <option name="number" value="LOCAL‎۰۰۰۰۲" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۰۲" />
+      <updated>1783470489584</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
