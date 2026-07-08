@@ -17,22 +17,44 @@ class Topic(models.Model):
         ('humanities', 'انسانی'),
     ]
 
+    SEASON_CHOICES = [
+        ('1', 'فصل اول'),
+        ('2', 'فصل دوم'),
+        ('3', 'فصل سوم'),
+        ('4', 'فصل چهارم'),
+        ('5', 'فصل پنجم'),
+        ('6', 'فصل ششم'),
+        ('7', 'فصل هفتم'),
+        ('8', 'فصل هشتم'),
+        ('9', 'فصل نهم'),
+        ('10', 'فصل دهم'),
+        ('base', 'هندسه پایه'),
+        ('tahlil', 'هندسه تحلیلی')
+    ]
+
     ADDRESS_CHOICES = [
         ('10th', 'دهم'),
         ('11th', 'یازدهم'),
         ('12th', 'دوازدهم'),
         ('problem', 'مسائل'),
+        ('function', 'تابع'),
+        ('grade2', 'معادله و تابع درجه دو'),
+        ('equation', 'معادله و نا معادله'),
+        ('bro', 'قدر مطلق و براکت'),
+        ('logarithm', 'تابع نمایی و لگاریتمی'),
+        ('triangles', 'مثلثات'),
+        ('had', 'حد و پیوستگی'),
+        ('moshtaba', 'مشتق'),
+        ('usemoshtaba', 'کاربرد مشتق'),
+        ('olgoo', 'مجموعه،الگو و دنباله'),
+        ('tavan', 'توان گویا و عبارت جبری'),
+        ('geometry', 'هندسه'),
+        ('amar', 'امار'),
+        ('shomaresh', 'شمارش بدون شمردن'),
+        ('probability', 'احتمال')
     ]
 
-    SEASON_CHOICES = [
-        ('season1', 'فصل1'),
-        ('season2', 'فصل2'),
-        ('season3', 'فصل3'),
-        ('season4', 'فصل4'),
-        ('season5', 'فصل5')
-    ]
-
-    title = models.CharField(max_length=200, default='', verbose_name='نام مبحث')
+    title = models.CharField(max_length=200, default='', verbose_name= 'نام مبحث', blank=True )
 
     lesson = models.CharField(
         max_length=20,
@@ -54,6 +76,13 @@ class Topic(models.Model):
         blank=True,
         null=True,
         verbose_name='آدرس'
+    )
+    season = models.CharField(
+        max_length=20,
+        choices=SEASON_CHOICES,
+        blank=True,
+        null=True,
+        verbose_name='فصل'
     )
 
     def __str__(self):
