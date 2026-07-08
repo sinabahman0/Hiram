@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="739583cd-1f6e-41e2-bbc5-7070d3da7958" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/planer/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/planer/admin.py" afterDir="false" />
+    <list default="true" id="739583cd-1f6e-41e2-bbc5-7070d3da7958" name="Changes" comment="commit">
       <change beforePath="$PROJECT_DIR$/planer/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/planer/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -230,8 +227,15 @@
       <workItem from="1783368598670" duration="651000" />
       <workItem from="1783372706184" duration="8721000" />
       <workItem from="1783397172781" duration="2245000" />
-      <workItem from="1783465100203" duration="4114000" />
+      <workItem from="1783465100203" duration="4688000" />
     </task>
+    <task id="LOCAL‎۰۰۰۰۱" summary="commit">
+      <created>1783470175259</created>
+      <option name="number" value="LOCAL‎۰۰۰۰۱" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۰۱" />
+      <updated>1783470175261</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,6 +274,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/HIRAM_SITE$planer.coverage" NAME="planer Coverage Results" MODIFIED="1781598451506" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/planer" />

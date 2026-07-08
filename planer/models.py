@@ -92,8 +92,8 @@ class Topic(models.Model):
 class Plan(models.Model):
     relation = models.ForeignKey(UserRelationship, on_delete=models.CASCADE)
     topics = models.ManyToManyField(Topic)
-    start = models.DateField()
-    days = models.IntegerField()
+    start = models.DateField(blank=True)
+    days = models.IntegerField(blank=True)
 
     def __str__(self):
         return self.relation.student.first_name + " " + self.relation.student.last_name
